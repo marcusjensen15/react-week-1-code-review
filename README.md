@@ -12,13 +12,13 @@
 
 The purpose of this application is to allow the owner/operator of a bar to understand which beers they have on tap, and which beer kegs are close to needing replacement. The user will be able to: Add a new beer to the tap list, edit a beer, deduct a pint from the pints remaining, and delete a beer from the database.
 
-<<<<<<< HEAD:README.md
+
 as of 2/14/2020, this application is hard coded and non responsive, but by the end of the month the user will have access to all of this functionality.
-=======
+
 The foundation of this application has been built, and styling has been applied along with some routing. Full CRUD functionality needs to be built.
 
 as of 2/14/2020, this application is hard coded and non responseve, but by the end of the month the user will have access to all of this functionality.
->>>>>>> 24e43fa78f2913c7b7071d9f3ed639cea0fd1d82:react-code-review-1/README.md
+
 
 ## Key Custom Component List
 AboutApp
@@ -31,7 +31,7 @@ PintSoldButton
 
 ## Initial Application Flow Map
 
-<<<<<<< HEAD:README.md
+
 [Here is a link to the flow map of the application!](https://drive.google.com/file/d/1e5KgQR_cspekwBa2UBf2Pm_0qsrJFZWz/view?usp=sharing)
 
 
