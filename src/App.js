@@ -24,8 +24,9 @@ class App extends React.Component {
     };
     this.handleAddingNewKegToList = this.handleAddingNewKegToList.bind(this);
     this.handleEditingKeg = this.handleEditingKeg.bind(this);
-    //uncommented testThing to try and get state to update
+    //uncommented testThing to try and get state to update. may need another function to set the state.
     // this.testThing = this.testThing.bind(this);
+    // this.setEditingKeg = this.setEditingKeg.bind(this);
 
   }
 
@@ -33,6 +34,7 @@ class App extends React.Component {
     var newMasterKegList = this.state.masterKegList.slice();
     newMasterKegList.push(newKeg);
     this.setState({masterKegList: newMasterKegList});
+    // console.log(this.state.masterKegList);
   }
 
   //expermental edit keg function below. this.id might be something like this.parent.id. may need to share id between the keg and the button somehow
@@ -42,19 +44,27 @@ class App extends React.Component {
     newMasterKegList[editValueIndex] = revisedKeg
 
     this.setState({masterKegList: newMasterKegList});
+
   }
 
   //expermental edit keg function above
 
   //test thing is sucessfully getting back the id of the button corresponding to the clicked keg.
-  testThing(){
-    var newEditingKeg = state.editingKeg;
-    newEditingKeg = this.id;
-    this.setState({editingKeg: newEditingKeg});
-    console.log(state.editingKeg);
 
+  // setEditingKeg(test){
+  //
+  //   this.setState({editingKeg: test});
+  //   console.log(this.state.editingKeg);
+  // }
+
+  testThing(){
 
     // var test = console.log(this.id);
+    var bacon = this.id;
+    return bacon;
+
+    // this.setEditingKeg(bacon);
+
     // return test
   }
 

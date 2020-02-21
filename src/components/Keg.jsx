@@ -1,8 +1,15 @@
-import React from 'react';
+// import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+
 
 export default function Keg(props){
+
+
+  const [level, setLevel] = useState(124);
+
+
   var kegTextStyle = {
     fontSize: '50px',
     paddingTop: '2%',
@@ -43,8 +50,8 @@ export default function Keg(props){
         <h4>{props.brand}</h4>
         <p>{props.price}</p>
         <p>{props.alcoholContent}</p>
-        <p>Pints Remaining: {props.kegVolume}</p>
-        <button style={buttonStyle}> Pint Sold </button>
+        <p>Pints Remaining:{level}</p>
+        <button style={buttonStyle} onClick={() => setLevel(level-1)}> Pint Sold </button>
         <button id = {props.id} style={buttonStyle} onClick={() => {testThingCallback()}}> Edit Keg Details </button>
         <button id = {props.id} onClick={() => {testThingCallback()}}> <Link to='/newkegform'> Add a New Keg</Link></button>
 
