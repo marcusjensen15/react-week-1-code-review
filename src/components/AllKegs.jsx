@@ -57,7 +57,8 @@ export default function AllKegs(props){
           brand= {keg.brand}
           price= {keg.price}
           alcoholContent={keg.alcoholContent}
-          kegVolume={keg.kegVolume} />
+          kegVolume={keg.kegVolume}
+          id={keg.id}  />
       )}
     </div>
   );

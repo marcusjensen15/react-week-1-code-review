@@ -30,6 +30,15 @@ newMasterKegList.push(newKeg);
 this.setState({masterKegList: newMasterKegList});
 }
 
+//expermental edit keg function below
+handleEditingKeg(editKeg){
+var newMasterKegList = this.state.masterKegList.slice();
+newMasterKegList.push(editKeg);
+this.setState({masterKegList: newMasterKegList});
+}
+
+//expermental edit keg function above
+
 
 
 
