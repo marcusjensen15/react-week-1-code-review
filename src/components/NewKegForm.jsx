@@ -84,9 +84,10 @@ export default function NewKegForm(props){
               ref={(input) => {_brand = input;}}/>
             <input style={input}
               id='alcoholContent'
+              type='number'
               placeholder='enter value as ABV integer'
               ref={(input) => {_alcoholContent = input;}}/>
-          <div  style={submitButtonStyle}>  <button style={buttonSize} type='submit'>Help!</button> </div>
+            <div  style={submitButtonStyle}>  <button style={buttonSize} type='submit'>Add Keg</button> </div>
           </form>
 
         </div>

@@ -16,37 +16,37 @@ export default function AllKegs(){
     color: 'white'
   }
 
-  var masterKegList = [
-    {
-      name: 'Original Budweiser',
-      brand: 'Budweiser',
-      price: '$5/pint',
-      alcoholContent:"3.2% ABV",
-      kegVolume: "125"
-    },
-    {
-      name: 'Coors Light',
-      brand: 'Coors',
-      price: '$5/pint',
-      alcoholContent:"3.5% ABV",
-      kegVolume: "125"
-    },
-    {
-      names: 'Widmer Hef',
-      brand: 'Widmer Bros',
-      price: '$6/pint',
-      alcoholContent:"5% ABV",
-      kegVolume: "125"
-    },
-    {
-      name:"Cream Ale",
-      brand: "Pelican Brewing",
-      price: "$6/pint",
-      alcoholContent:"6.2% ABV",
-      kegVolume: "125"
-
-    }
-  ];
+  // var masterKegList = [
+  //   {
+  //     name: 'Original Budweiser',
+  //     brand: 'Budweiser',
+  //     price: '$5/pint',
+  //     alcoholContent:"3.2% ABV",
+  //     kegVolume: "125"
+  //   },
+  //   {
+  //     name: 'Coors Light',
+  //     brand: 'Coors',
+  //     price: '$5/pint',
+  //     alcoholContent:"3.5% ABV",
+  //     kegVolume: "125"
+  //   },
+  //   {
+  //     names: 'Widmer Hef',
+  //     brand: 'Widmer Bros',
+  //     price: '$6/pint',
+  //     alcoholContent:"5% ABV",
+  //     kegVolume: "125"
+  //   },
+  //   {
+  //     name:"Cream Ale",
+  //     brand: "Pelican Brewing",
+  //     price: "$6/pint",
+  //     alcoholContent:"6.2% ABV",
+  //     kegVolume: "125"
+  //
+  //   }
+  // ];
 
   return(
     <div style={textCenter}>
