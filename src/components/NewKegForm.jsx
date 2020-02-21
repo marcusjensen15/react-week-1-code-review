@@ -1,12 +1,16 @@
 import React from 'react';
+import { v4 } from 'uuid';
+import PropTypes from 'prop-types';
+
+
 
 //will need to import new keg form
 
 export default function NewKegForm(props){
 
   let _name = null;
-  let _location = null;
-  let _issue = null;
+  let _brand = null;
+  let _alcoholContent = null;
 
   const textCenter = {
     textAlign: 'center',
@@ -53,6 +57,14 @@ export default function NewKegForm(props){
     marginTop: '2.5%'
   }
 
+  function handleNewKegFormSubmission(event) {
+  event.preventDefault();
+  props.onNewKegCreation({name: _name.value, brand: _brand.value, alcoholContent: _alcoholContent.value, id: v4(), kegVolume: 125});
+  _names.value = '';
+  _location.value = '';
+  _issue.value = '';
+    }
+
   return(
 
     <div style={textCenter}>
@@ -60,21 +72,21 @@ export default function NewKegForm(props){
         <h1 style={newBeerHeader}>Add a new beer </h1>
         <form>
 //experimenting
-          <form onSubmit={handleNewTicketFormSubmission}>
+          <form onSubmit={handleNewKegFormSubmission}>
             <input
               type='text'
-              id='names'
-              placeholder='Pair Names'
-              ref={(input) => {_names = input;}}/>
+              id='name'
+              placeholder='Beer Name'
+              ref={(input) => {_name = input;}}/>
             <input
               type='text'
-              id='location'
-              placeholder='Location'
-              ref={(input) => {_location = input;}}/>
+              id='brand'
+              placeholder='Brand'
+              ref={(input) => {_brand = input;}}/>
             <textarea
-              id='issue'
-              placeholder='Describe your issue.'
-              ref={(textarea) => {_issue = textarea;}}/>
+              id='alcoholContent'
+              placeholder='enter value as ABV integer'
+              ref={(input) => {_alcoholContent = textarea;}}/>
             <button type='submit'>Help!</button>
           </form>
 
@@ -127,3 +139,7 @@ export default function NewKegForm(props){
     </div>
   );
 }
+
+NewKegForm.propTypes = {
+  onNewKegCreation: PropTypes.func
+};
