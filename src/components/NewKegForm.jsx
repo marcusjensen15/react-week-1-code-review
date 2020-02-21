@@ -2,7 +2,11 @@ import React from 'react';
 
 //will need to import new keg form
 
-export default function NewKegForm(){
+export default function NewKegForm(props){
+
+  let _name = null;
+  let _location = null;
+  let _issue = null;
 
   const textCenter = {
     textAlign: 'center',
@@ -55,6 +59,29 @@ export default function NewKegForm(){
       <div style={formWrap}>
         <h1 style={newBeerHeader}>Add a new beer </h1>
         <form>
+//experimenting
+          <form onSubmit={handleNewTicketFormSubmission}>
+            <input
+              type='text'
+              id='names'
+              placeholder='Pair Names'
+              ref={(input) => {_names = input;}}/>
+            <input
+              type='text'
+              id='location'
+              placeholder='Location'
+              ref={(input) => {_location = input;}}/>
+            <textarea
+              id='issue'
+              placeholder='Describe your issue.'
+              ref={(textarea) => {_issue = textarea;}}/>
+            <button type='submit'>Help!</button>
+          </form>
+
+  //experimenting
+
+
+
           <ul style={listStyle}>
             <li style={inputPadding}>
               <label>
