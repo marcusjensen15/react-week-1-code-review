@@ -39,7 +39,7 @@ render(){
     <div>
       <Header/>
       <Switch>
-         <Route exact path='/' component={AllKegs} />
+         <Route exact path='/' render={()=><AllKegs kegList={this.state.masterKegList} />} />
            <Route exact path='/aboutapp' component={AboutApp} />
           <Route exact path='/newkegform' render={()=><NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />}/>
 
@@ -49,6 +49,7 @@ render(){
   );
 }
 }
+
 
 
 export default App;

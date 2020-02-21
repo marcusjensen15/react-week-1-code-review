@@ -2,15 +2,12 @@ import React from 'react';
 import { v4 } from 'uuid';
 import PropTypes from 'prop-types';
 
-
-
-//will need to import new keg form
-
 export default function NewKegForm(props){
 
   let _name = null;
   let _brand = null;
   let _alcoholContent = null;
+  let _price = null;
 
   const textCenter = {
     textAlign: 'center',
@@ -59,10 +56,11 @@ export default function NewKegForm(props){
 
   function handleNewKegFormSubmission(event) {
   event.preventDefault();
-  props.onNewKegCreation({name: _name.value, brand: _brand.value, alcoholContent: _alcoholContent.value, id: v4(), kegVolume: 125});
+  props.onNewKegCreation({name: _name.value, price: _price.value, brand: _brand.value, alcoholContent: _alcoholContent.value, id: v4(), kegVolume: 125});
   _name.value = '';
   _brand.value = '';
   _alcoholContent.value = '';
+  _price.value = '';
     }
 
   return(
@@ -82,6 +80,11 @@ export default function NewKegForm(props){
               id='brand'
               placeholder='Brand'
               ref={(input) => {_brand = input;}}/>
+              <input style={input}
+                type='number'
+                id='price'
+                placeholder='Price per Pint'
+                ref={(input) => {_price = input;}}/>
             <input style={input}
               id='alcoholContent'
               type='number'

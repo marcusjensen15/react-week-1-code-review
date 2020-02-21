@@ -1,18 +1,10 @@
 import React from 'react';
 import Keg from './Keg';
+import PropTypes from 'prop-types';
 
 //will need to import new keg form
 
-class AllKegs extends React.Component {
-
-
-  constructor(props) {
-  super(props);
-  this.state = {
-    masterKegList: []
-  };
-  this.handleAddingNewKegToList = this.handleAddingNewKegToList.bind(this);
-}
+export default function AllKegs(props){
 
   const textCenter = {
     textAlign: 'center',
@@ -57,17 +49,10 @@ class AllKegs extends React.Component {
   //   }
   // ];
 
-  handleAddingNewKegToList(newKeg){
-  var newMasterKegList = this.state.masterKegList.slice();
-  newMasterKegList.push(newKeg);
-  this.setState({masterKegList: newMasterKegList});
-}
-
-render(){
   return(
     <div style={textCenter}>
       <h1 style={kegHeader}>All Available Kegs</h1>
-      {masterKegList.map((keg,index) =>
+      {props.kegList.map((keg,index) =>
         <Keg name={keg.name}
           brand= {keg.brand}
           price= {keg.price}
@@ -77,6 +62,7 @@ render(){
     </div>
   );
 }
-}
 
-export default AllKegs;
+  AllKegs.propTypes = {
+    kegList: PropTypes.array
+  };
