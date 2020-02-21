@@ -41,6 +41,11 @@ export default function Keg(props){
 
 }
 
+if(level<120){
+  kegTextStyle.color = 'red';
+}
+
+
 //add test route button
   return(
     <div style={textCenter}>
