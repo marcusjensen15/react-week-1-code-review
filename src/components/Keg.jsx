@@ -28,6 +28,11 @@ export default function Keg(props){
     fontSize: '40%'
   }
 
+  function testThingCallback(){
+    props.onTestThing();
+
+}
+
 
   return(
     <div style={textCenter}>
@@ -39,6 +44,7 @@ export default function Keg(props){
         <p>{props.alcoholContent}</p>
         <p>Pints Remaining: {props.kegVolume}</p>
         <button style={buttonStyle}> Pint Sold </button>
+        <button id = {props.id} style={buttonStyle} onClick={() => {this.testThingCallback}}> Edit Keg Details </button>
 
       </div>
     </div>
@@ -51,5 +57,6 @@ Keg.propTypes = {
   price: PropTypes.string.isRequired,
   alcoholContent: PropTypes.string.isRequired,
   kegVolume: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  onTestThing: PropTypes.func
 }

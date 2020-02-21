@@ -58,12 +58,14 @@ export default function AllKegs(props){
           price= {keg.price}
           alcoholContent={keg.alcoholContent}
           kegVolume={keg.kegVolume}
-          id={keg.id}  />
+          id={keg.id}
+          onTestThing= {this.props.onTestThing}  />
       )}
     </div>
   );
 }
 
   AllKegs.propTypes = {
-    kegList: PropTypes.array
+    kegList: PropTypes.array,
+    onTestThing: PropTypes.func
   };
