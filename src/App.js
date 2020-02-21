@@ -17,55 +17,66 @@ class App extends React.Component {
 
 
   constructor(props) {
-  super(props);
-  this.state = {
-    masterKegList: []
-  };
-  this.handleAddingNewKegToList = this.handleAddingNewKegToList.bind(this);
-  this.handleEditingKeg = this.handleEditingKeg.bind(this);
-  // this.testThing = this.testThing.bind(this);
+    super(props);
+    this.state = {
+      masterKegList: [],
+      editingKeg: null
+    };
+    this.handleAddingNewKegToList = this.handleAddingNewKegToList.bind(this);
+    this.handleEditingKeg = this.handleEditingKeg.bind(this);
+    //uncommented testThing to try and get state to update
+    // this.testThing = this.testThing.bind(this);
 
-}
+  }
 
-handleAddingNewKegToList(newKeg){
-var newMasterKegList = this.state.masterKegList.slice();
-newMasterKegList.push(newKeg);
-this.setState({masterKegList: newMasterKegList});
-}
+  handleAddingNewKegToList(newKeg){
+    var newMasterKegList = this.state.masterKegList.slice();
+    newMasterKegList.push(newKeg);
+    this.setState({masterKegList: newMasterKegList});
+  }
 
-//expermental edit keg function below. this.id might be something like this.parent.id. may need to share id between the keg and the button somehow
-handleEditingKeg(kegToBeEdited, revisedKeg){
-var newMasterKegList = this.state.masterKegList.slice(); //copy of list
-var editValueIndex = newMasterKegList.findIndex(x => x.id === this.id); //find index of thing we want to edit in the copy
-newMasterKegList[editValueIndex] = revisedKeg
+  //expermental edit keg function below. this.id might be something like this.parent.id. may need to share id between the keg and the button somehow
+  handleEditingKeg(kegToBeEdited, revisedKeg){
+    var newMasterKegList = this.state.masterKegList.slice(); //copy of list
+    var editValueIndex = newMasterKegList.findIndex(x => x.id === this.id); //find index of thing we want to edit in the copy
+    newMasterKegList[editValueIndex] = revisedKeg
 
-this.setState({masterKegList: newMasterKegList});
-}
+    this.setState({masterKegList: newMasterKegList});
+  }
 
-//expermental edit keg function above
-testThing(){
+  //expermental edit keg function above
 
-  console.log(this.id);
-}
+  //test thing is sucessfully getting back the id of the button corresponding to the clicked keg.
+  testThing(){
+    var newEditingKeg = state.editingKeg;
+    newEditingKeg = this.id;
+    this.setState({editingKeg: newEditingKeg});
+    console.log(state.editingKeg);
 
 
+    // var test = console.log(this.id);
+    // return test
+  }
+
+  //experiemnting with edit keg route.
 
 
-render(){
+  render(){
 
-  return (
-    <div>
-      <Header/>
-      <Switch>
-         <Route exact path='/' render={()=><AllKegs kegList={this.state.masterKegList} onTestThing={this.testThing} />} />
-           <Route exact path='/aboutapp' component={AboutApp} />
+    return (
+      <div>
+        <Header/>
+        <Switch>
+          <Route exact path='/' render={()=><AllKegs kegList={this.state.masterKegList} onTestThing={this.testThing} />} />
+          <Route exact path='/aboutapp' component={AboutApp} />
           <Route exact path='/newkegform' render={()=><NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />} />
+          <Route exact path='/editkegform' render={()=><NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />} />
 
 
-      </Switch>
-    </div>
-  );
-}
+        </Switch>
+      </div>
+    );
+  }
 }
 
 

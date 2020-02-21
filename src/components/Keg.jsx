@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default function Keg(props){
   var kegTextStyle = {
@@ -33,7 +34,7 @@ export default function Keg(props){
 
 }
 
-
+//add test route button
   return(
     <div style={textCenter}>
       <div style={kegTextStyle}>
@@ -45,6 +46,7 @@ export default function Keg(props){
         <p>Pints Remaining: {props.kegVolume}</p>
         <button style={buttonStyle}> Pint Sold </button>
         <button id = {props.id} style={buttonStyle} onClick={() => {testThingCallback()}}> Edit Keg Details </button>
+        <button id = {props.id} onClick={() => {testThingCallback()}}> <Link to='/newkegform'> Add a New Keg</Link></button>
 
       </div>
     </div>
