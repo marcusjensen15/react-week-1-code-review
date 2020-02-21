@@ -23,7 +23,7 @@ class App extends React.Component {
   };
   this.handleAddingNewKegToList = this.handleAddingNewKegToList.bind(this);
   this.handleEditingKeg = this.handleEditingKeg.bind(this);
-  this.testThing = this.testThing.bind(this);
+  // this.testThing = this.testThing.bind(this);
 
 }
 
@@ -45,7 +45,7 @@ this.setState({masterKegList: newMasterKegList});
 //expermental edit keg function above
 testThing(){
 
-  console.log('hello');
+  console.log(this.id);
 }
 
 

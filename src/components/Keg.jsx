@@ -44,7 +44,7 @@ export default function Keg(props){
         <p>{props.alcoholContent}</p>
         <p>Pints Remaining: {props.kegVolume}</p>
         <button style={buttonStyle}> Pint Sold </button>
-        <button id = {props.id} style={buttonStyle} onClick={() => {this.testThingCallback}}> Edit Keg Details </button>
+        <button id = {props.id} style={buttonStyle} onClick={() => {testThingCallback()}}> Edit Keg Details </button>
 
       </div>
     </div>

@@ -59,7 +59,7 @@ export default function AllKegs(props){
           alcoholContent={keg.alcoholContent}
           kegVolume={keg.kegVolume}
           id={keg.id}
-          onTestThing= {this.props.onTestThing}  />
+          onTestThing= {props.onTestThing}  />
       )}
     </div>
   );
