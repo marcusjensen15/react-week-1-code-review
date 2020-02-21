@@ -60,9 +60,9 @@ export default function NewKegForm(props){
   function handleNewKegFormSubmission(event) {
   event.preventDefault();
   props.onNewKegCreation({name: _name.value, brand: _brand.value, alcoholContent: _alcoholContent.value, id: v4(), kegVolume: 125});
-  _names.value = '';
-  _location.value = '';
-  _issue.value = '';
+  _name.value = '';
+  _brand.value = '';
+  _alcoholContent.value = '';
     }
 
   return(
@@ -70,73 +70,30 @@ export default function NewKegForm(props){
     <div style={textCenter}>
       <div style={formWrap}>
         <h1 style={newBeerHeader}>Add a new beer </h1>
-        <form>
-//experimenting
+
           <form onSubmit={handleNewKegFormSubmission}>
-            <input
+            <input style={input}
               type='text'
               id='name'
               placeholder='Beer Name'
               ref={(input) => {_name = input;}}/>
-            <input
+            <input style={input}
               type='text'
               id='brand'
               placeholder='Brand'
               ref={(input) => {_brand = input;}}/>
-            <textarea
+            <input style={input}
               id='alcoholContent'
               placeholder='enter value as ABV integer'
-              ref={(input) => {_alcoholContent = textarea;}}/>
-            <button type='submit'>Help!</button>
+              ref={(input) => {_alcoholContent = input;}}/>
+          <div  style={submitButtonStyle}>  <button style={buttonSize} type='submit'>Help!</button> </div>
           </form>
 
-  //experimenting
-
-
-
-          <ul style={listStyle}>
-            <li style={inputPadding}>
-              <label>
-                Name of Beer
-                <br></br>
-                <input style={input} type="text" name="name" />
-              </label>
-            </li>
-            <li style={inputPadding}>
-              <label>
-                Brand
-                <br></br>
-                <input style={input} type="text" name="name" />
-              </label>
-            </li>
-            <li style={inputPadding}>
-              <label>
-                Price per Pint
-                <br></br>
-                <input style={input} type="text" name="name" />
-              </label>
-            </li>
-            <li style={inputPadding}>
-              <label>
-                Alcohol Content
-                <br></br>
-                <input style={input} type="text" name="name" />
-              </label>
-            </li>
-            <li style={inputPadding}>
-              <label>
-                Keg Volume
-                <br></br>
-                <input style={input} type="number" name="name" />
-              </label>
-            </li>
-            <div  style={submitButtonStyle}><li><input style={buttonSize}type="submit" value="Submit" /></li> </div>
-
-          </ul>
-        </form>
-
+        </div>
       </div>
-    </div>
+
+
+
   );
 }
 
