@@ -3,7 +3,16 @@ import Keg from './Keg';
 
 //will need to import new keg form
 
-export default function AllKegs(){
+class AllKegs extends React.Component {
+
+
+  constructor(props) {
+  super(props);
+  this.state = {
+    masterKegList: []
+  };
+  this.handleAddingNewKegToList = this.handleAddingNewKegToList.bind(this);
+}
 
   const textCenter = {
     textAlign: 'center',
@@ -48,6 +57,13 @@ export default function AllKegs(){
   //   }
   // ];
 
+  handleAddingNewKegToList(newKeg){
+  var newMasterKegList = this.state.masterKegList.slice();
+  newMasterKegList.push(newKeg);
+  this.setState({masterKegList: newMasterKegList});
+}
+
+render(){
   return(
     <div style={textCenter}>
       <h1 style={kegHeader}>All Available Kegs</h1>
@@ -61,3 +77,6 @@ export default function AllKegs(){
     </div>
   );
 }
+}
+
+export default AllKegs;

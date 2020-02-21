@@ -13,19 +13,42 @@ import NewKegForm from './components/NewKegForm';
 import Header from './components/Header';
 
 
-function App() {
+class App extends React.Component() {
+
+
+  constructor(props) {
+  super(props);
+  this.state = {
+    masterKegList: []
+  };
+  this.handleAddingNewKegToList = this.handleAddingNewKegToList.bind(this);
+}
+
+handleAddingNewKegToList(newKeg){
+var newMasterKegList = this.state.masterKegList.slice();
+newMasterKegList.push(newKeg);
+this.setState({masterKegList: newMasterKegList});
+}
+
+
+
+
+render(){
+
   return (
     <div>
       <Header/>
       <Switch>
          <Route exact path='/' component={AllKegs} />
            <Route exact path='/aboutapp' component={AboutApp} />
-          <Route exact path='/newkegform' component={NewKegForm} />
+          <Route exact path='/newkegform' render={()=><NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />}/>
 
 
       </Switch>
     </div>
   );
 }
+}
+
 
 export default App;
