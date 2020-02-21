@@ -13,7 +13,7 @@ import NewKegForm from './components/NewKegForm';
 import Header from './components/Header';
 
 
-class App extends React.Component() {
+class App extends React.Component {
 
 
   constructor(props) {
@@ -41,7 +41,7 @@ render(){
       <Switch>
          <Route exact path='/' render={()=><AllKegs kegList={this.state.masterKegList} />} />
            <Route exact path='/aboutapp' component={AboutApp} />
-          <Route exact path='/newkegform' render={()=><NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />}/>
+          <Route exact path='/newkegform' render={()=><NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />} />
 
 
       </Switch>
