@@ -9,23 +9,93 @@ import AllKegs from './components/AllKegs';
 // import Keg from './components/Keg';
 import AboutApp from './components/AboutApp';
 import NewKegForm from './components/NewKegForm';
+import EditKegForm from './components/EditKegForm';
+
 
 import Header from './components/Header';
 
 
-function App() {
-  return (
-    <div>
-      <Header/>
-      <Switch>
-         <Route exact path='/' component={AllKegs} />
-           <Route exact path='/aboutapp' component={AboutApp} />
-          <Route exact path='/newkegform' component={NewKegForm} />
+class App extends React.Component {
 
 
-      </Switch>
-    </div>
-  );
+  constructor(props) {
+    super(props);
+    this.state = {
+      masterKegList: [],
+      editKegId: null,
+      editKegVol: null
+    };
+    this.handleAddingNewKegToList = this.handleAddingNewKegToList.bind(this);
+    this.editAKeg = this.editAKeg.bind(this);
+    this.sellAPint = this.sellAPint.bind(this);
+
+  }
+
+  async  handleAddingNewKegToList(newKeg){
+    var newMasterKegList = this.state.masterKegList.slice();
+    newMasterKegList.push(newKeg);
+    await  this.setState({masterKegList: newMasterKegList});
+    console.log(this.state.masterKegList);
+  }
+
+  async editAKeg(id){
+    var newMasterKegList = this.state.masterKegList;
+    var newEditKegId = this.state.editKegId;
+    var newEditKegVol = this.state.editKegVol;
+    newEditKegId = id;
+    await this.setState({editKegId: newEditKegId});
+
+    for(var i = 0; i < newMasterKegList.length; i++){
+
+      if(typeof newMasterKegList[i] != "undefined" && newMasterKegList[i].id === id){
+        newEditKegVol = newMasterKegList[i].kegVolume;
+        await this.setState({editKegVol: newEditKegVol});
+        console.log(this.state)
+
+        delete newMasterKegList[i];
+
+        console.log(newMasterKegList);
+      }
+    }
+  }
+
+  testThing(){
+    var bacon = this.id;
+    console.log(bacon);
+  }
+
+  async sellAPint(id){
+    var newMasterKegList = this.state.masterKegList;
+    for (var i = 0; i < newMasterKegList.length; i++) {
+      if(typeof newMasterKegList[i] != "undefined" && newMasterKegList[i].id === id){
+        newMasterKegList[i].kegVolume -= 1;
+      }
+    }
+    await  this.setState({masterKegList: newMasterKegList});
+    console.log(this.state.masterKegList);
+  }
+
+  //experiemnting with edit keg route.
+
+
+  render(){
+
+    return (
+      <div>
+        <Header/>
+        <Switch>
+          <Route exact path='/' render={()=><AllKegs kegList={this.state.masterKegList} onTestThing={this.testThing} onSellAPint={this.sellAPint} onEditAKeg={this.editAKeg} />} />
+          <Route exact path='/aboutapp' component={AboutApp} />
+          <Route exact path='/newkegform' render={()=><NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />} />
+          <Route exact path='/editkegform' render={()=><EditKegForm editKegId={this.state.editKegId} editKegVol={this.state.editKegVol} onEditKeg={this.handleAddingNewKegToList}/>} />
+
+
+        </Switch>
+      </div>
+    );
+  }
 }
+
+
 
 export default App;

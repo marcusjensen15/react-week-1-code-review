@@ -1,8 +1,13 @@
 import React from 'react';
+import { v4 } from 'uuid';
+import PropTypes from 'prop-types';
 
-//will need to import new keg form
+export default function NewKegForm(props){
 
-export default function NewKegForm(){
+  let _name = null;
+  let _brand = null;
+  let _alcoholContent = null;
+  let _price = null;
 
   const textCenter = {
     textAlign: 'center',
@@ -49,54 +54,53 @@ export default function NewKegForm(){
     marginTop: '2.5%'
   }
 
+  function handleNewKegFormSubmission(event) {
+    event.preventDefault();
+    props.onNewKegCreation({name: _name.value, price: _price.value, brand: _brand.value, alcoholContent: _alcoholContent.value, id: v4(), kegVolume: 124});
+    _name.value = '';
+    _brand.value = '';
+    _alcoholContent.value = '';
+    _price.value = '';
+  }
+
   return(
 
     <div style={textCenter}>
       <div style={formWrap}>
         <h1 style={newBeerHeader}>Add a new beer </h1>
-        <form>
-          <ul style={listStyle}>
-            <li style={inputPadding}>
-              <label>
-                Name of Beer
-                <br></br>
-                <input style={input} type="text" name="name" />
-              </label>
-            </li>
-            <li style={inputPadding}>
-              <label>
-                Brand
-                <br></br>
-                <input style={input} type="text" name="name" />
-              </label>
-            </li>
-            <li style={inputPadding}>
-              <label>
-                Price per Pint
-                <br></br>
-                <input style={input} type="text" name="name" />
-              </label>
-            </li>
-            <li style={inputPadding}>
-              <label>
-                Alcohol Content
-                <br></br>
-                <input style={input} type="text" name="name" />
-              </label>
-            </li>
-            <li style={inputPadding}>
-              <label>
-                Keg Volume
-                <br></br>
-                <input style={input} type="number" name="name" />
-              </label>
-            </li>
-            <div  style={submitButtonStyle}><li><input style={buttonSize}type="submit" value="Submit" /></li> </div>
 
-          </ul>
+        <form onSubmit={handleNewKegFormSubmission}>
+          <input style={input}
+            type='text'
+            id='name'
+            placeholder='Beer Name'
+            ref={(input) => {_name = input;}}/>
+          <input style={input}
+            type='text'
+            id='brand'
+            placeholder='Brand'
+            ref={(input) => {_brand = input;}}/>
+          <input style={input}
+            type='number'
+            id='price'
+            placeholder='Price per Pint'
+            ref={(input) => {_price = input;}}/>
+          <input style={input}
+            id='alcoholContent'
+            type='number'
+            placeholder='enter value as ABV integer'
+            ref={(input) => {_alcoholContent = input;}}/>
+          <div  style={submitButtonStyle}>  <button style={buttonSize} type='submit'>Add Keg</button> </div>
         </form>
 
       </div>
     </div>
+
+
+
   );
 }
+
+NewKegForm.propTypes = {
+  onNewKegCreation: PropTypes.func
+};

@@ -1,9 +1,10 @@
 import React from 'react';
 import Keg from './Keg';
+import PropTypes from 'prop-types';
 
 //will need to import new keg form
 
-export default function AllKegs(){
+export default function AllKegs(props){
 
   const textCenter = {
     textAlign: 'center',
@@ -16,48 +17,28 @@ export default function AllKegs(){
     color: 'white'
   }
 
-  var masterKegList = [
-    {
-      name: 'Original Budweiser',
-      brand: 'Budweiser',
-      price: '$5/pint',
-      alcoholContent:"3.2% ABV",
-      kegVolume: "125"
-    },
-    {
-      name: 'Coors Light',
-      brand: 'Coors',
-      price: '$5/pint',
-      alcoholContent:"3.5% ABV",
-      kegVolume: "125"
-    },
-    {
-      names: 'Widmer Hef',
-      brand: 'Widmer Bros',
-      price: '$6/pint',
-      alcoholContent:"5% ABV",
-      kegVolume: "125"
-    },
-    {
-      name:"Cream Ale",
-      brand: "Pelican Brewing",
-      price: "$6/pint",
-      alcoholContent:"6.2% ABV",
-      kegVolume: "125"
-
-    }
-  ];
 
   return(
     <div style={textCenter}>
       <h1 style={kegHeader}>All Available Kegs</h1>
-      {masterKegList.map((keg,index) =>
+      {props.kegList.map((keg,index) =>
         <Keg name={keg.name}
           brand= {keg.brand}
           price= {keg.price}
           alcoholContent={keg.alcoholContent}
-          kegVolume={keg.kegVolume} />
+          kegVolume={keg.kegVolume}
+          id={keg.id}
+          onTestThing= {props.onTestThing}
+          onSellAPint = {props.onSellAPint}
+          onEditAKeg = {props.onEditAKeg}  />
       )}
     </div>
   );
 }
+
+  AllKegs.propTypes = {
+    kegList: PropTypes.array,
+    onTestThing: PropTypes.func,
+    onSellAPint: PropTypes.func,
+    onEditAKeg: PropTypes.func
+  };

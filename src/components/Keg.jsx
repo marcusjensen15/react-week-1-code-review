@@ -1,7 +1,13 @@
-import React from 'react';
+// import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+
 
 export default function Keg(props){
+
+
+
   var kegTextStyle = {
     fontSize: '50px',
     paddingTop: '2%',
@@ -28,7 +34,24 @@ export default function Keg(props){
     fontSize: '40%'
   }
 
+  function testThingCallback(){
+    props.onTestThing();
+}
 
+  function onSellAPintCallback(id){
+    props.onSellAPint(id);
+  }
+
+  function onEditAKegCallback(id){
+    props.onEditAKeg(id);
+  }
+
+if(props.kegVolume < 120){
+  kegTextStyle.color = 'red';
+}
+
+
+//add test route button
   return(
     <div style={textCenter}>
       <div style={kegTextStyle}>
@@ -37,8 +60,9 @@ export default function Keg(props){
         <h4>{props.brand}</h4>
         <p>{props.price}</p>
         <p>{props.alcoholContent}</p>
-        <p>Pints Remaining: {props.kegVolume}</p>
-        <button style={buttonStyle}> Pint Sold </button>
+        <p>Pints Remaining:{props.kegVolume}</p>
+        <button style={buttonStyle} onClick={() => {onSellAPintCallback(props.id)}} > Pint Sold </button>
+        <button id = {props.id} style={buttonStyle} onClick={() => {onEditAKegCallback(props.id)}}> <Link to='/editkegform'> Edit This Keg</Link> </button> 
 
       </div>
     </div>
@@ -50,5 +74,9 @@ Keg.propTypes = {
   brand: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   alcoholContent: PropTypes.string.isRequired,
-  kegVolume: PropTypes.number.isRequired
+  kegVolume: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  onTestThing: PropTypes.func,
+  onSellAPint: PropTypes.func,
+  onEditAKeg: PropTypes.func
 }

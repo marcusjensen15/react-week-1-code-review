@@ -17,7 +17,7 @@ as of 2/14/2020, this application is hard coded and non responsive, but by the e
 
 The foundation of this application has been built, and styling has been applied along with some routing. Full CRUD functionality needs to be built.
 
-as of 2/14/2020, this application is hard coded and non responseve, but by the end of the month the user will have access to all of this functionality.
+as of 2/14/2020, this application is hard coded and non responsive, but by the end of the month the user will have access to all of this functionality.
 
 
 ## Key Custom Component List
