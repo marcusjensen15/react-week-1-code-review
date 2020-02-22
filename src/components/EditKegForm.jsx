@@ -1,8 +1,15 @@
 import React from 'react';
+import { v4 } from 'uuid';
+import PropTypes from 'prop-types';
 
-//will need to import new keg form
+export default function EditKegForm(props){
 
-export default function NewKegForm(){
+  let _name = null;
+  let _brand = null;
+  let _alcoholContent = null;
+  let _price = null;
+  let _kegVolume = props.kegVolume;
+  let _id = props.id;
 
   const textCenter = {
     textAlign: 'center',
@@ -49,54 +56,55 @@ export default function NewKegForm(){
     marginTop: '2.5%'
   }
 
+
+//pass id and current keg volume down as props
+  function handleEditKegFormSubmission(event) {
+    event.preventDefault();
+    props.onEditKeg({name: _name.value, price: _price.value, brand: _brand.value, alcoholContent: _alcoholContent.value, id: props.id, kegVolume: props.kegVolume});
+    _name.value = '';
+    _brand.value = '';
+    _alcoholContent.value = '';
+    _price.value = '';
+  }
+
   return(
 
     <div style={textCenter}>
       <div style={formWrap}>
-        <h1 style={newBeerHeader}>Add a new beer </h1>
-        <form>
-          <ul style={listStyle}>
-            <li style={inputPadding}>
-              <label>
-                Name of Beer
-                <br></br>
-                <input style={input} type="text" name="name" />
-              </label>
-            </li>
-            <li style={inputPadding}>
-              <label>
-                Brand
-                <br></br>
-                <input style={input} type="text" name="name" />
-              </label>
-            </li>
-            <li style={inputPadding}>
-              <label>
-                Price per Pint
-                <br></br>
-                <input style={input} type="text" name="name" />
-              </label>
-            </li>
-            <li style={inputPadding}>
-              <label>
-                Alcohol Content
-                <br></br>
-                <input style={input} type="text" name="name" />
-              </label>
-            </li>
-            <li style={inputPadding}>
-              <label>
-                Keg Volume
-                <br></br>
-                <input style={input} type="number" name="name" />
-              </label>
-            </li>
-            <div  style={submitButtonStyle}><li><input style={buttonSize}type="submit" value="Submit" /></li> </div>
+        <h1 style={newBeerHeader}>Edit the Keg </h1>
 
-          </ul>
+        <form onSubmit={handleNewKegFormSubmission}>
+          <input style={input}
+            type='text'
+            id='name'
+            placeholder='Beer Name'
+            ref={(input) => {_name = input;}}/>
+          <input style={input}
+            type='text'
+            id='brand'
+            placeholder='Brand'
+            ref={(input) => {_brand = input;}}/>
+          <input style={input}
+            type='number'
+            id='price'
+            placeholder='Price per Pint'
+            ref={(input) => {_price = input;}}/>
+          <input style={input}
+            id='alcoholContent'
+            type='number'
+            placeholder='enter value as ABV integer'
+            ref={(input) => {_alcoholContent = input;}}/>
+          <div  style={submitButtonStyle}>  <button style={buttonSize} type='submit'>Edit Keg</button> </div>
         </form>
 
       </div>
     </div>
+
+
+
   );
 }
+
+NewKegForm.propTypes = {
+  onNewKegCreation: PropTypes.func
+};

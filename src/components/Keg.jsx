@@ -7,8 +7,6 @@ import React, {useState} from 'react';
 export default function Keg(props){
 
 
-  const [level, setLevel] = useState(124);
-
 
   var kegTextStyle = {
     fontSize: '50px',
@@ -38,13 +36,14 @@ export default function Keg(props){
 
   function testThingCallback(){
     props.onTestThing();
-
 }
 
   function onSellAPintCallback(id){
     props.onSellAPint(id);
+  }
 
-
+  function onEditAKegCallback(id){
+    props.onEditAKeg(id);
   }
 
 if(props.kegVolume < 120){
@@ -63,7 +62,7 @@ if(props.kegVolume < 120){
         <p>{props.alcoholContent}</p>
         <p>Pints Remaining:{props.kegVolume}</p>
         <button style={buttonStyle} onClick={() => {onSellAPintCallback(props.id)}} > Pint Sold </button>
-        <button id = {props.id} style={buttonStyle} onClick={() => {testThingCallback()}}> Edit Keg Details </button>
+        <button id = {props.id} style={buttonStyle} onClick={() => {onEditAKegCallback(props.id)}}> Edit Keg Details </button> //can put props.id in here too. locate keg, set state
         <button id = {props.id} onClick={() => {testThingCallback()}}> <Link to='/newkegform'> Add a New Keg</Link></button>
 
       </div>
@@ -79,5 +78,6 @@ Keg.propTypes = {
   kegVolume: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
   onTestThing: PropTypes.func,
-  onSellAPint: PropTypes.func
+  onSellAPint: PropTypes.func,
+  onEditAKeg: PropTypes.func
 }

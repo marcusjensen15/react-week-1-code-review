@@ -17,37 +17,6 @@ export default function AllKegs(props){
     color: 'white'
   }
 
-  // var masterKegList = [
-  //   {
-  //     name: 'Original Budweiser',
-  //     brand: 'Budweiser',
-  //     price: '$5/pint',
-  //     alcoholContent:"3.2% ABV",
-  //     kegVolume: "125"
-  //   },
-  //   {
-  //     name: 'Coors Light',
-  //     brand: 'Coors',
-  //     price: '$5/pint',
-  //     alcoholContent:"3.5% ABV",
-  //     kegVolume: "125"
-  //   },
-  //   {
-  //     names: 'Widmer Hef',
-  //     brand: 'Widmer Bros',
-  //     price: '$6/pint',
-  //     alcoholContent:"5% ABV",
-  //     kegVolume: "125"
-  //   },
-  //   {
-  //     name:"Cream Ale",
-  //     brand: "Pelican Brewing",
-  //     price: "$6/pint",
-  //     alcoholContent:"6.2% ABV",
-  //     kegVolume: "125"
-  //
-  //   }
-  // ];
 
   return(
     <div style={textCenter}>
@@ -60,7 +29,8 @@ export default function AllKegs(props){
           kegVolume={keg.kegVolume}
           id={keg.id}
           onTestThing= {props.onTestThing}
-          onSellAPint = {props.onSellAPint}  />
+          onSellAPint = {props.onSellAPint}
+          onEditAKeg = {props.onEditAKeg}  />
       )}
     </div>
   );
@@ -69,5 +39,6 @@ export default function AllKegs(props){
   AllKegs.propTypes = {
     kegList: PropTypes.array,
     onTestThing: PropTypes.func,
-    onSellAPint: PropTypes.func
+    onSellAPint: PropTypes.func,
+    onEditAKeg: PropTypes.func
   };
