@@ -9,6 +9,8 @@ import AllKegs from './components/AllKegs';
 // import Keg from './components/Keg';
 import AboutApp from './components/AboutApp';
 import NewKegForm from './components/NewKegForm';
+import EditKegForm from './components/EditKegForm';
+
 
 import Header from './components/Header';
 
@@ -45,10 +47,14 @@ class App extends React.Component {
 
     for(var i = 0; i < newMasterKegList.length; i++){
 
-      if(newMasterKegList[i].id === id){
+      if(typeof newMasterKegList[i] != "undefined" && newMasterKegList[i].id === id){
         newEditKegVol = newMasterKegList[i].kegVolume;
         await this.setState({editKegVol: newEditKegVol});
         console.log(this.state)
+
+        delete newMasterKegList[i];
+
+        console.log(newMasterKegList);
       }
     }
   }
@@ -61,7 +67,7 @@ class App extends React.Component {
   async sellAPint(id){
     var newMasterKegList = this.state.masterKegList;
     for (var i = 0; i < newMasterKegList.length; i++) {
-      if(newMasterKegList[i].id === id){
+      if(typeof newMasterKegList[i] != "undefined" && newMasterKegList[i].id === id){
         newMasterKegList[i].kegVolume -= 1;
       }
     }
@@ -81,7 +87,7 @@ class App extends React.Component {
           <Route exact path='/' render={()=><AllKegs kegList={this.state.masterKegList} onTestThing={this.testThing} onSellAPint={this.sellAPint} onEditAKeg={this.editAKeg} />} />
           <Route exact path='/aboutapp' component={AboutApp} />
           <Route exact path='/newkegform' render={()=><NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />} />
-          <Route exact path='/editkegform' render={()=><NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />} />
+          <Route exact path='/editkegform' render={()=><EditKegForm editKegId={this.state.editKegId} editKegVol={this.state.editKegVol} onEditKeg={this.handleAddingNewKegToList}/>} />
 
 
         </Switch>

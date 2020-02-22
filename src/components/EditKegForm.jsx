@@ -8,8 +8,8 @@ export default function EditKegForm(props){
   let _brand = null;
   let _alcoholContent = null;
   let _price = null;
-  let _kegVolume = props.kegVolume;
-  let _id = props.id;
+  let _kegVolume = props.editKegId;
+  let _id = props.editKegVol;
 
   const textCenter = {
     textAlign: 'center',
@@ -73,7 +73,7 @@ export default function EditKegForm(props){
       <div style={formWrap}>
         <h1 style={newBeerHeader}>Edit the Keg </h1>
 
-        <form onSubmit={handleNewKegFormSubmission}>
+        <form onSubmit={handleEditKegFormSubmission}>
           <input style={input}
             type='text'
             id='name'
@@ -105,6 +105,6 @@ export default function EditKegForm(props){
   );
 }
 
-NewKegForm.propTypes = {
-  onNewKegCreation: PropTypes.func
+EditKegForm.propTypes = {
+  onEditKeg: PropTypes.func
 };
