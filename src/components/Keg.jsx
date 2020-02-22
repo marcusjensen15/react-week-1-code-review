@@ -41,9 +41,15 @@ export default function Keg(props){
 
 }
 
-if(level<120){
-  kegTextStyle.color = 'red';
-}
+  function onSellAPintCallback(id){
+    props.onSellAPint(id);
+
+
+  }
+
+// if(level<120){
+//   kegTextStyle.color = 'red';
+// }
 
 
 //add test route button
@@ -55,8 +61,8 @@ if(level<120){
         <h4>{props.brand}</h4>
         <p>{props.price}</p>
         <p>{props.alcoholContent}</p>
-        <p>Pints Remaining:{level}</p>
-        <button style={buttonStyle} onClick={() => setLevel(level-1)}> Pint Sold </button>
+        <p>Pints Remaining:{props.kegVolume}</p>
+        <button style={buttonStyle} onClick={() => {onSellAPintCallback(props.id)}} > Pint Sold </button>
         <button id = {props.id} style={buttonStyle} onClick={() => {testThingCallback()}}> Edit Keg Details </button>
         <button id = {props.id} onClick={() => {testThingCallback()}}> <Link to='/newkegform'> Add a New Keg</Link></button>
 
@@ -72,5 +78,6 @@ Keg.propTypes = {
   alcoholContent: PropTypes.string.isRequired,
   kegVolume: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
-  onTestThing: PropTypes.func
+  onTestThing: PropTypes.func,
+  onSellAPint: PropTypes.func
 }

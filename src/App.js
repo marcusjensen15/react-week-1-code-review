@@ -19,22 +19,20 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      masterKegList: [],
-      editingKeg: null
+      masterKegList: []
     };
     this.handleAddingNewKegToList = this.handleAddingNewKegToList.bind(this);
     this.handleEditingKeg = this.handleEditingKeg.bind(this);
-    //uncommented testThing to try and get state to update. may need another function to set the state.
-    // this.testThing = this.testThing.bind(this);
-    // this.setEditingKeg = this.setEditingKeg.bind(this);
+
+    this.sellAPint = this.sellAPint.bind(this);
 
   }
 
-  handleAddingNewKegToList(newKeg){
+  async  handleAddingNewKegToList(newKeg){
     var newMasterKegList = this.state.masterKegList.slice();
     newMasterKegList.push(newKeg);
-    this.setState({masterKegList: newMasterKegList});
-    // console.log(this.state.masterKegList);
+    await  this.setState({masterKegList: newMasterKegList});
+    console.log(this.state.masterKegList);
   }
 
   //expermental edit keg function below. this.id might be something like this.parent.id. may need to share id between the keg and the button somehow
@@ -61,11 +59,21 @@ class App extends React.Component {
 
     // var test = console.log(this.id);
     var bacon = this.id;
-    return bacon;
+    console.log(bacon);
+  }
 
-    // this.setEditingKeg(bacon);
+  async sellAPint(id){
+    var newMasterKegList = this.state.masterKegList;
 
-    // return test
+    for (var i = 0; i < newMasterKegList.length; i++) {
+      if(newMasterKegList[i].id === id){
+        newMasterKegList[i].kegVolume -= 1;
+      }
+
+    }
+    await  this.setState({masterKegList: newMasterKegList});
+    console.log(this.state.masterKegList);
+
   }
 
   //experiemnting with edit keg route.
@@ -77,7 +85,7 @@ class App extends React.Component {
       <div>
         <Header/>
         <Switch>
-          <Route exact path='/' render={()=><AllKegs kegList={this.state.masterKegList} onTestThing={this.testThing} />} />
+          <Route exact path='/' render={()=><AllKegs kegList={this.state.masterKegList} onTestThing={this.testThing} onSellAPint={this.sellAPint} />} />
           <Route exact path='/aboutapp' component={AboutApp} />
           <Route exact path='/newkegform' render={()=><NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />} />
           <Route exact path='/editkegform' render={()=><NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />} />
