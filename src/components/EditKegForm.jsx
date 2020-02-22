@@ -60,7 +60,7 @@ export default function EditKegForm(props){
 //pass id and current keg volume down as props
   function handleEditKegFormSubmission(event) {
     event.preventDefault();
-    props.onEditKeg({name: _name.value, price: _price.value, brand: _brand.value, alcoholContent: _alcoholContent.value, id: props.id, kegVolume: props.kegVolume});
+    props.onEditKeg({name: _name.value, price: _price.value, brand: _brand.value, alcoholContent: _alcoholContent.value, id: props.editKegId, kegVolume: props.editKegVol});
     _name.value = '';
     _brand.value = '';
     _alcoholContent.value = '';
@@ -106,5 +106,7 @@ export default function EditKegForm(props){
 }
 
 EditKegForm.propTypes = {
-  onEditKeg: PropTypes.func
+  onEditKeg: PropTypes.func,
+  editKegId: PropTypes.string,
+  editKegVol: PropTypes.number
 };

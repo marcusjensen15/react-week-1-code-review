@@ -62,8 +62,7 @@ if(props.kegVolume < 120){
         <p>{props.alcoholContent}</p>
         <p>Pints Remaining:{props.kegVolume}</p>
         <button style={buttonStyle} onClick={() => {onSellAPintCallback(props.id)}} > Pint Sold </button>
-        <button id = {props.id} style={buttonStyle} onClick={() => {onEditAKegCallback(props.id)}}> Edit Keg Details </button> //can put props.id in here too. locate keg, set state
-        <button id = {props.id} onClick={() => {testThingCallback()}}> <Link to='/newkegform'> Add a New Keg</Link></button>
+        <button id = {props.id} style={buttonStyle} onClick={() => {onEditAKegCallback(props.id)}}> <Link to='/editkegform'> Edit This Keg</Link> </button> 
 
       </div>
     </div>
