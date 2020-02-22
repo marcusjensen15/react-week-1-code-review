@@ -46,7 +46,7 @@ export default function Keg(props){
     props.onEditAKeg(id);
   }
 
-if(props.kegVolume < 120){
+if(props.kegVolume < 10){
   kegTextStyle.color = 'red';
 }
 
@@ -56,13 +56,13 @@ if(props.kegVolume < 120){
     <div style={textCenter}>
       <div style={kegTextStyle}>
 
-        <h3>{props.name}</h3>
-        <h4>{props.brand}</h4>
-        <p>{props.price}</p>
-        <p>{props.alcoholContent}</p>
+        <h3>Beer Name: {props.name}</h3>
+        <h4>Beer Brand: {props.brand}</h4>
+        <p>Price Per Pint: ${props.price}</p>
+        <p>Alcohol Content: {props.alcoholContent}% ABV</p>
         <p>Pints Remaining:{props.kegVolume}</p>
         <button style={buttonStyle} onClick={() => {onSellAPintCallback(props.id)}} > Pint Sold </button>
-        <button id = {props.id} style={buttonStyle} onClick={() => {onEditAKegCallback(props.id)}}> <Link to='/editkegform'> Edit This Keg</Link> </button> 
+        <button id = {props.id} style={buttonStyle} onClick={() => {onEditAKegCallback(props.id)}}> <Link to='/editkegform'> Edit This Keg</Link> </button>
 
       </div>
     </div>
