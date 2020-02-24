@@ -13,11 +13,9 @@
 The purpose of this application is to allow the owner/operator of a bar to understand which beers they have on tap, and which beer kegs are close to needing replacement. The user will be able to: Add a new beer to the tap list, edit a beer, deduct a pint from the pints remaining, and delete a beer from the database.
 
 
-as of 2/14/2020, this application is hard coded and non responsive, but by the end of the month the user will have access to all of this functionality.
+This application is now fully responsive. The user is now able to enter in some details on their specific keg (brand, beer, abv, price per pint.). The user see a full list of beers and dedtuct a pint after a beer is sold. If the user needs to edit the details of the beer, they can click the 'edit keg' button and change the beer's: name, brand and ABV. The edit function will preserve the keg's unique ID and the number of pints remaining in within the keg.
 
-The foundation of this application has been built, and styling has been applied along with some routing. Full CRUD functionality needs to be built.
-
-as of 2/14/2020, this application is hard coded and non responsive, but by the end of the month the user will have access to all of this functionality.
+As pints are reduced below '10 pints remaining', all of the font for that keg will turn red. This makes it easy for the user to know which kegs need to be replaced. 
 
 
 ## Key Custom Component List
@@ -27,7 +25,9 @@ EditKegForm
 KegHeader
 LessThan10Pints
 NewKegForm
-PintSoldButton
+EditKegForm
+Keg
+
 
 ## Initial Application Flow Map
 
